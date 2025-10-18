@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.navigation.NavController
 import com.google.android.gms.wearable.PutDataMapRequest
 import com.google.android.gms.wearable.Wearable
-import com.jackappsdev.password_manager.R
+import com.example.passwordvault.R
 import com.example.passwordvault.core.copyToClipboard
 import com.example.passwordvault.core.launchUrl
 import com.example.passwordvault.domain.mappers.toPasswordItemDto

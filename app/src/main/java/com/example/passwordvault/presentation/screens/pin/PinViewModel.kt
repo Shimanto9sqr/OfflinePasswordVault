@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jackappsdev.password_manager.R
+import com.example.passwordvault.R
 import com.example.passwordvault.domain.repository.UserPreferencesRepository
 import com.example.passwordvault.presentation.screens.pin.event.PinUiEffect
 import com.example.passwordvault.presentation.screens.pin.event.PinUiEvent

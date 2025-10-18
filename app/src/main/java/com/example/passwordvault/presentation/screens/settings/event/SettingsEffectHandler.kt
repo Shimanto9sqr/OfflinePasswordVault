@@ -19,7 +19,7 @@ import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateOptions
 import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.ktx.requestAppUpdateInfo
-import com.jackappsdev.password_manager.R
+import com.example.passwordvault.R
 import com.example.passwordvault.core.isAtLeastAndroid
 import com.example.passwordvault.presentation.navigation.Routes
 import com.example.passwordvault.presentation.screens.settings.model.ExportPasswordAuthType.BiometricAuth

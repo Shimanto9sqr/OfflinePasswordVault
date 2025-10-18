@@ -2,7 +2,7 @@ package com.example.passwordvault.presentation.screens.change_password.event
 
 import android.content.Context
 import androidx.navigation.NavController
-import com.jackappsdev.password_manager.R
+import com.example.passwordvault.R
 import com.example.passwordvault.core.showToast
 
 class ChangePasswordEffectHandler(

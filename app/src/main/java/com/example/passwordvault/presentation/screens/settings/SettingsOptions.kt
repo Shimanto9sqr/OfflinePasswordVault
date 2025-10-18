@@ -1,6 +1,6 @@
 package com.example.passwordvault.presentation.screens.settings
 
-import com.jackappsdev.password_manager.R
+import com.example.passwordvault.R
 import com.example.passwordvault.presentation.components.OptionItem
 
 object SettingsOptions {

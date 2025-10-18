@@ -8,7 +8,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
-import com.jackappsdev.password_manager.R
+import com.example.passwordvault.R
 import com.example.passwordvault.presentation.components.EmptyStateView
 import com.example.passwordvault.presentation.screens.home.HomeState
 import com.example.passwordvault.presentation.screens.home.event.HomeUiEvent

@@ -23,7 +23,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
-import com.jackappsdev.password_manager.R
+import com.example.passwordvault.R
 import com.example.passwordvault.presentation.components.EmptyStateView
 import com.example.passwordvault.presentation.components.LoadingStateView
 import com.example.passwordvault.presentation.screens.manage_categories.components.CategoryItemsView

@@ -29,7 +29,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
-import com.jackappsdev.password_manager.R
+import com.example.passwordvault.R
 import com.example.passwordvault.presentation.screens.password_lock.PasswordLockError
 import com.example.passwordvault.presentation.screens.password_lock.PasswordLockState
 import com.example.passwordvault.presentation.screens.password_lock.event.PasswordLockUiEvent

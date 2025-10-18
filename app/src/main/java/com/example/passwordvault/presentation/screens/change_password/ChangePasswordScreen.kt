@@ -19,7 +19,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import com.jackappsdev.password_manager.R
+import com.example.passwordvault.R
 import com.example.passwordvault.presentation.screens.change_password.components.ChangePasswordView
 import com.example.passwordvault.presentation.screens.change_password.event.ChangePasswordEffectHandler
 import com.example.passwordvault.presentation.screens.change_password.event.ChangePasswordUiEffect

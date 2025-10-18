@@ -28,11 +28,11 @@ fun generateVersionName(): String {
 }
 
 android {
-    namespace = "com.jackappsdev.password_manager"
+    namespace = "com.example.passwordvault"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.jackappsdev.password_manager"
+        applicationId = "com.example.passwordvault"
         minSdk = minimumSdkVersion
         targetSdk = 36
         versionCode = generateVersionCode()

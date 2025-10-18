@@ -14,7 +14,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
-import com.jackappsdev.password_manager.R
+import com.example.passwordvault.R
 import com.example.passwordvault.domain.model.PasswordWithCategoryModel
 import com.example.passwordvault.presentation.screens.password_item_detail.PasswordItemDetailState
 import com.example.passwordvault.presentation.screens.password_item_detail.event.PasswordItemDetailUiEvent

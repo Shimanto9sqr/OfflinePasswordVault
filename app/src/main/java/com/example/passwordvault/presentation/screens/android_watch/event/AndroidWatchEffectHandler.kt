@@ -6,7 +6,7 @@ import androidx.navigation.NavController
 import com.google.android.gms.wearable.CapabilityClient.FILTER_REACHABLE
 import com.google.android.gms.wearable.PutDataMapRequest
 import com.google.android.gms.wearable.Wearable
-import com.jackappsdev.password_manager.R
+import com.example.passwordvault.R
 import com.example.passwordvault.constants.KEY_PIN
 import com.example.passwordvault.constants.SET_PIN
 import com.example.passwordvault.constants.VERIFY_WEAR_APP

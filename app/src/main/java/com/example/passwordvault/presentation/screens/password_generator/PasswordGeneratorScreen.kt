@@ -14,7 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import com.jackappsdev.password_manager.R
+import com.example.passwordvault.R
 import com.example.passwordvault.presentation.screens.password_generator.components.GeneratedPasswordView
 import com.example.passwordvault.presentation.screens.password_generator.components.LengthSliderView
 import com.example.passwordvault.presentation.screens.password_generator.components.OptionsView

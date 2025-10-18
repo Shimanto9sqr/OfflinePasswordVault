@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jackappsdev.password_manager.R
+import com.example.passwordvault.R
 import com.example.passwordvault.domain.model.CategoryModel
 import com.example.passwordvault.domain.repository.CategoryRepository
 import com.example.passwordvault.presentation.screens.add_category_item.event.AddCategoryItemUiEffect

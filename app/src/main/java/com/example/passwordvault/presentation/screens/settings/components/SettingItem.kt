@@ -1,5 +1,4 @@
 package com.example.passwordvault.presentation.screens.settings.components
-
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.clickable
 import androidx.compose.material.icons.Icons
@@ -13,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.jackappsdev.password_manager.R
+import com.example.passwordvault.R
 import com.example.passwordvault.presentation.theme.PasswordManagerTheme
 
 @Composable
@@ -36,7 +35,7 @@ fun SettingItem(
             }
         },
         headlineContent = {
-            Text(title)
+            Text("title")
         },
         modifier = modifier.clickable(onClick = onClick)
     )

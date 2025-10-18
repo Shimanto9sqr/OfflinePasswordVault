@@ -2,7 +2,7 @@ package com.example.passwordvault.presentation.screens.password_generator
 
 import androidx.annotation.StringRes
 import androidx.compose.ui.graphics.Color
-import com.jackappsdev.password_manager.R
+import com.example.passwordvault.R
 
 data class PasswordGeneratorState(
     val password: String = "",

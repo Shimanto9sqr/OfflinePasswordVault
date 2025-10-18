@@ -9,7 +9,7 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.platform.SoftwareKeyboardController
 import androidx.core.content.ContextCompat.getString
 import androidx.fragment.app.FragmentActivity
-import com.jackappsdev.password_manager.R
+import com.example.passwordvault.R
 
 class PasswordLockEffectHandler(
     activity: FragmentActivity,

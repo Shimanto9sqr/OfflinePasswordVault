@@ -15,7 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.res.stringResource
-import com.jackappsdev.password_manager.R
+import com.example.passwordvault.R
 import com.example.passwordvault.presentation.screens.password_lock.components.EnterPasswordView
 import com.example.passwordvault.presentation.screens.password_lock.components.SetupPasswordView
 import com.example.passwordvault.presentation.screens.password_lock.event.PasswordLockEffectHandler

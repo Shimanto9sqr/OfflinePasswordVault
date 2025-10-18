@@ -8,7 +8,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
-import com.jackappsdev.password_manager.R
+import com.example.passwordvault.R
 import com.example.passwordvault.core.GeneratePasswordConfig
 import com.example.passwordvault.core.generateRandomPassword
 import com.example.passwordvault.domain.mappers.toCategoryModel

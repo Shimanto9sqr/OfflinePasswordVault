@@ -7,7 +7,7 @@ import androidx.compose.material3.SheetState
 import androidx.compose.ui.focus.FocusManager
 import androidx.compose.ui.platform.SoftwareKeyboardController
 import androidx.navigation.NavHostController
-import com.jackappsdev.password_manager.R
+import com.example.passwordvault.R
 import com.example.passwordvault.domain.model.CategoryModel
 import com.example.passwordvault.presentation.navigation.Routes
 import com.example.passwordvault.core.showToast

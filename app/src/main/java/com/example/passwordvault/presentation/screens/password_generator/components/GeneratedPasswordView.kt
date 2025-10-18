@@ -20,7 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.jackappsdev.password_manager.R
+import com.example.passwordvault.R
 import com.example.passwordvault.presentation.screens.password_generator.PasswordGeneratorState
 import com.example.passwordvault.presentation.screens.password_generator.event.PasswordGeneratorUiEvent
 import com.example.passwordvault.presentation.theme.pagePadding

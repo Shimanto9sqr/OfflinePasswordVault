@@ -39,7 +39,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.res.stringResource
 //import com.example.passwordvault.BuildConfig
-import com.jackappsdev.password_manager.R
+import com.example.passwordvault.R
 import com.example.passwordvault.core.isAtLeastAndroid
 import com.example.passwordvault.presentation.components.ConfirmationDialog
 import com.example.passwordvault.presentation.components.DialogWithOptions
