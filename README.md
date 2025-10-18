@@ -5,6 +5,12 @@
 A modern, secure, and offline-first Android application built with **Kotlin** and **Jetpack Compose** for managing your passwords with military-grade encryption and a beautiful **Material 3** design.
 
 ---
+## App preview
+
+
+https://github.com/user-attachments/assets/4b50c875-8a44-4671-a8d2-d0f91b94ed26
+
+
 
 ## ⚙️ Technologies Used
 
