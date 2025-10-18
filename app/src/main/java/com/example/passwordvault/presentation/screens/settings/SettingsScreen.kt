@@ -328,17 +328,6 @@ fun SettingsScreen(
                     )
                 }
             }
-
-            SettingItem(
-                leadingIcon = Icons.Outlined.StarOutline,
-                title = stringResource(R.string.label_rate_app),
-                onClick = { onEvent(SettingsUiEvent.OpenPlayStorePage) }
-            )
-
-//            SettingItem(
-//                leadingIcon = Icons.Outlined.Numbers,
-//                title = stringResource(R.string.label_app_version, BuildConfig.VERSION_NAME)
-//            )
         }
     }
 }
