@@ -37,8 +37,6 @@ Secure Vault is designed for maximum security and ease of use, putting you in co
 
 - **Strong Password Generation** 🔑: Integrated **Password Generator** to create complex, unguessable passwords on demand.
 
-- **Data Management** 💾: Securely **Import/Export** your entire encrypted database to back up your data or move it between devices.
-
 - **Organization** 📂: Use **Categories** to effectively group and organize your saved passwords (e.g., Work, Social, Finance).
 
 - **Efficient Navigation** ⏬: **Filter** your passwords based on their assigned Category.
@@ -51,11 +49,7 @@ Secure Vault is designed for maximum security and ease of use, putting you in co
 
 ## 🎨 Design & Experience
 
-- **Material 3 & Material You** provides a sleek, modern, and highly customizable user interface that respects your device's theme and system settings.
+- **Material 3 & Jetpack Compose** provides a sleek, modern, and highly customizable user interface that respects your device's theme and system settings.
 - Focus on clean, intuitive navigation for a seamless password management experience.
 
 ---
-
-## 📱 App Preview
-
-*Insert an actual GIF or a set of screenshots showcasing the app's UI, features like categories, and the unlock screen.*
