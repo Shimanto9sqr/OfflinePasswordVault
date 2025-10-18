@@ -1,4 +1,4 @@
-# Secure Vault 🔒
+# Password Vault 🔒
 
 **Your Private & Encrypted Password Manager**
 
