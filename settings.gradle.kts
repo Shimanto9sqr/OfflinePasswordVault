@@ -19,5 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "OfflinePasswordVault"
+rootProject.name = "Passwordvault"
 include(":app")
+ 

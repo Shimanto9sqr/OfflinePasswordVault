@@ -1,0 +1,71 @@
+package com.example.passwordvault.presentation.screens.password_generator
+
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import com.jackappsdev.password_manager.R
+import com.example.passwordvault.presentation.screens.password_generator.components.GeneratedPasswordView
+import com.example.passwordvault.presentation.screens.password_generator.components.LengthSliderView
+import com.example.passwordvault.presentation.screens.password_generator.components.OptionsView
+import com.example.passwordvault.presentation.screens.password_generator.event.PasswordGeneratorEffectHandler
+import com.example.passwordvault.presentation.screens.password_generator.event.PasswordGeneratorUiEffect
+import com.example.passwordvault.presentation.screens.password_generator.event.PasswordGeneratorUiEvent
+import com.example.passwordvault.presentation.theme.windowInsetsVerticalZero
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collectLatest
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun PasswordGeneratorScreen(
+    snackbarHostState: SnackbarHostState,
+    state: PasswordGeneratorState,
+    effectFlow: Flow<PasswordGeneratorUiEffect>,
+    effectHandler: PasswordGeneratorEffectHandler,
+    onEvent: (PasswordGeneratorUiEvent) -> Unit
+) {
+    val scrollState = rememberScrollState()
+
+    LaunchedEffect(key1 = Unit) {
+        effectFlow.collectLatest { effect ->
+            with(effectHandler) {
+                when (effect) {
+                    is PasswordGeneratorUiEffect.CopyToClipboard -> onCopyText(effect.text)
+                    is PasswordGeneratorUiEffect.ShowSnackbarMessage -> onShowSnackbarMessage(effect.message)
+                }
+            }
+        }
+    }
+
+    Scaffold(
+        topBar = {
+            CenterAlignedTopAppBar(
+                title = { Text("Password Generator") },
+                windowInsets = windowInsetsVerticalZero
+            )
+        },
+        snackbarHost = {
+            SnackbarHost(hostState = snackbarHostState)
+        },
+    ) { contentPadding ->
+        Column(
+            modifier = Modifier
+                .padding(contentPadding)
+                .verticalScroll(scrollState)
+        ) {
+            GeneratedPasswordView(state, onEvent)
+            LengthSliderView(state, onEvent)
+            OptionsView(state, onEvent)
+        }
+    }
+}

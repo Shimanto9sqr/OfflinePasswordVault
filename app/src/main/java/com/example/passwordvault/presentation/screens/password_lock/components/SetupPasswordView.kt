@@ -1,0 +1,120 @@
+package com.example.passwordvault.presentation.screens.password_lock.components
+
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Done
+import androidx.compose.material.icons.outlined.Visibility
+import androidx.compose.material.icons.outlined.VisibilityOff
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.unit.dp
+import com.jackappsdev.password_manager.R
+import com.example.passwordvault.presentation.components.InfoText
+import com.example.passwordvault.presentation.screens.password_lock.PasswordLockError
+import com.example.passwordvault.presentation.screens.password_lock.PasswordLockState
+import com.example.passwordvault.presentation.screens.password_lock.event.PasswordLockUiEvent
+
+@Composable
+fun SetupPasswordView(
+    state: PasswordLockState,
+    error: PasswordLockError?,
+    onEvent: (PasswordLockUiEvent) -> Unit
+) {
+    OutlinedTextField(
+        value = state.password,
+        onValueChange = { onEvent(PasswordLockUiEvent.EnterPassword(it)) },
+        label = { Text(stringResource(R.string.label_password)) },
+        modifier = Modifier.fillMaxWidth(),
+        isError = error is PasswordLockError.PasswordError,
+        visualTransformation = if (state.showPassword) {
+            VisualTransformation.None
+        } else {
+            PasswordVisualTransformation()
+        },
+        singleLine = true,
+        supportingText = {
+            error?.let {
+                if (it is PasswordLockError.PasswordError) Text(stringResource(it.error))
+            }
+        },
+        trailingIcon = {
+            IconButton(onClick = { onEvent(PasswordLockUiEvent.ToggleShowPasswordVisibility) }) {
+                Icon(
+                    imageVector = if (state.showPassword) {
+                        Icons.Outlined.VisibilityOff
+                    } else {
+                        Icons.Outlined.Visibility
+                    },
+                    contentDescription = stringResource(R.string.accessibility_toggle_password)
+                )
+            }
+        },
+        keyboardOptions = KeyboardOptions(
+            keyboardType = KeyboardType.Password,
+            imeAction = ImeAction.Done
+        ),
+    )
+
+    OutlinedTextField(
+        value = state.confirmPassword,
+        onValueChange = { onEvent(PasswordLockUiEvent.EnterConfirmPassword(it)) },
+        label = { Text(stringResource(R.string.label_confirm_password)) },
+        modifier = Modifier.fillMaxWidth(),
+        isError = error is PasswordLockError.ConfirmPasswordError,
+        visualTransformation = if (state.showConfirmPassword) {
+            VisualTransformation.None
+        } else {
+            PasswordVisualTransformation()
+        },
+        singleLine = true,
+        supportingText = {
+            error?.let {
+                if (it is PasswordLockError.ConfirmPasswordError) Text(stringResource(it.error))
+            }
+        },
+        trailingIcon = {
+            IconButton(onClick = { onEvent(PasswordLockUiEvent.ToggleShowConfirmPasswordVisibility) }) {
+                Icon(
+                    imageVector = if (state.showConfirmPassword) {
+                        Icons.Outlined.VisibilityOff
+                    } else {
+                        Icons.Outlined.Visibility
+                    },
+                    contentDescription = stringResource(R.string.accessibility_toggle_confirm_password)
+                )
+            }
+        },
+        keyboardOptions = KeyboardOptions(
+            keyboardType = KeyboardType.Password,
+            imeAction = ImeAction.Done
+        ),
+    )
+
+    Spacer(modifier = Modifier.height(4.dp))
+    InfoText(text ="Note: You will need this password to Unlock")
+    Spacer(modifier = Modifier.height(20.dp))
+
+    Button(
+        modifier = Modifier.fillMaxWidth(),
+        onClick = { onEvent(PasswordLockUiEvent.SetupNewPassword) }
+    ) {
+        Icon(Icons.Outlined.Done, stringResource(R.string.accessibility_confirm))
+        Spacer(modifier = Modifier.size(ButtonDefaults.IconSpacing))
+        Text(stringResource(R.string.btn_confirm))
+    }
+}

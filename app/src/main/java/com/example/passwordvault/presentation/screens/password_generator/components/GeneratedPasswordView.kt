@@ -1,0 +1,80 @@
+package com.example.passwordvault.presentation.screens.password_generator.components
+
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.selection.SelectionContainer
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.ContentCopy
+import androidx.compose.material.icons.outlined.Refresh
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import com.jackappsdev.password_manager.R
+import com.example.passwordvault.presentation.screens.password_generator.PasswordGeneratorState
+import com.example.passwordvault.presentation.screens.password_generator.event.PasswordGeneratorUiEvent
+import com.example.passwordvault.presentation.theme.pagePadding
+
+@Composable
+fun GeneratedPasswordView(
+    state: PasswordGeneratorState,
+    onEvent: (PasswordGeneratorUiEvent) -> Unit
+) {
+    Column(
+        modifier = Modifier.padding(
+            top = 12.dp,
+            bottom = 8.dp,
+            start = pagePadding,
+            end = pagePadding
+        )
+    ) {
+        SelectionContainer {
+            Text(
+                text = state.password,
+                style = MaterialTheme.typography.headlineLarge
+            )
+        }
+
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                text = stringResource(state.passwordStrengthText),
+                fontWeight = FontWeight.SemiBold,
+                color = if (isSystemInDarkTheme()) {
+                    state.passwordStrengthColorDark
+                } else {
+                    state.passwordStrengthColor
+                }
+            )
+
+            Row {
+                IconButton(onClick = { onEvent(PasswordGeneratorUiEvent.RegeneratePassword) }) {
+                    Icon(
+                        imageVector = Icons.Outlined.Refresh,
+                        contentDescription = "Generate Again"
+                    )
+                }
+
+                IconButton(onClick = { onEvent(PasswordGeneratorUiEvent.CopyPassword) }) {
+                    Icon(
+                        imageVector = Icons.Outlined.ContentCopy,
+                        contentDescription = "Copy text"
+                    )
+                }
+            }
+        }
+    }
+}

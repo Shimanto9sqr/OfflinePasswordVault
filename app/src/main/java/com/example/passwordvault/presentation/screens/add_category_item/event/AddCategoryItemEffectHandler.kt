@@ -1,0 +1,21 @@
+package com.example.passwordvault.presentation.screens.add_category_item.event
+
+import androidx.navigation.NavController
+import com.example.passwordvault.domain.model.CategoryModel
+import com.example.passwordvault.presentation.screens.add_category_item.constants.CREATED_CATEGORY
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
+
+class AddCategoryItemEffectHandler(
+    private val navController: NavController
+) {
+
+    fun onNavigateUp(model: CategoryModel?) {
+        navController.navigateUp()
+
+        model?.let {
+            val savedState = navController.currentBackStackEntry?.savedStateHandle
+            savedState?.set(CREATED_CATEGORY, Json.encodeToString(model))
+        }
+    }
+}

@@ -82,10 +82,6 @@ composeCompiler {
 }
 
 dependencies {
-    // Modules
-    implementation(project(":shared"))
-
-    // Core
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
 

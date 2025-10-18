@@ -1,0 +1,112 @@
+package com.example.passwordvault.presentation.screens.manage_categories
+
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.ArrowBack
+import androidx.compose.material.icons.rounded.Add
+import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.res.stringResource
+import com.jackappsdev.password_manager.R
+import com.example.passwordvault.presentation.components.EmptyStateView
+import com.example.passwordvault.presentation.components.LoadingStateView
+import com.example.passwordvault.presentation.screens.manage_categories.components.CategoryItemsView
+import com.example.passwordvault.presentation.screens.manage_categories.event.ManageCategoriesEffectHandler
+import com.example.passwordvault.presentation.screens.manage_categories.event.ManageCategoriesUiEffect
+import com.example.passwordvault.presentation.screens.manage_categories.event.ManageCategoriesUiEvent
+import com.example.passwordvault.presentation.theme.windowInsetsVerticalZero
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collectLatest
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ManageCategoriesScreen(
+    state: ManageCategoriesState,
+    effectFlow: Flow<ManageCategoriesUiEffect>,
+    effectHandler: ManageCategoriesEffectHandler,
+    onEvent: (ManageCategoriesUiEvent) -> Unit
+) {
+    val categoryItems = state.items?.collectAsState()
+    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
+    val lazyColumnState = rememberLazyListState()
+
+    LaunchedEffect(key1 = Unit) {
+        effectFlow.collectLatest { effect ->
+            with(effectHandler) {
+                when (effect) {
+                    is ManageCategoriesUiEffect.ScrollToTop -> onScrollToTop(lazyColumnState)
+                    is ManageCategoriesUiEffect.NavigateToAddCategory -> onNavigateToAddCategory()
+                    is ManageCategoriesUiEffect.NavigateToCategoryItem -> onNavigateToCategoryItem(effect.id)
+                    is ManageCategoriesUiEffect.NavigateUp -> onNavigateUp()
+                }
+            }
+        }
+    }
+
+    Scaffold(
+        topBar = {
+            CenterAlignedTopAppBar(
+                navigationIcon = {
+                    IconButton(onClick = { onEvent(ManageCategoriesUiEvent.NavigateUp) }) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+                            contentDescription = stringResource(R.string.accessibility_go_back)
+                        )
+                    }
+                },
+                title = { Text("Categories") },
+                scrollBehavior = scrollBehavior,
+                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                    scrolledContainerColor = MaterialTheme.colorScheme.surface
+                ),
+                modifier = Modifier.clickable(
+                    indication = null,
+                    interactionSource = remember { MutableInteractionSource() }
+                ) {
+                    onEvent(ManageCategoriesUiEvent.ScrollToTop)
+                },
+                windowInsets = windowInsetsVerticalZero
+            )
+        },
+        floatingActionButton = {
+            FloatingActionButton(onClick = { onEvent(ManageCategoriesUiEvent.NavigateToAddCategory) }) {
+                Icon(Icons.Rounded.Add, stringResource(R.string.accessibility_add_category))
+            }
+        },
+        modifier = Modifier.nestedScroll(
+            scrollBehavior.nestedScrollConnection
+        )
+    ) { contentPadding ->
+        val modifier = Modifier.padding(contentPadding)
+
+        when {
+            state.isLoading -> {
+                LoadingStateView(modifier)
+            }
+
+            categoryItems?.value?.isEmpty() == true -> {
+                EmptyStateView(modifier = modifier, title = R.string.text_no_categories_available)
+            }
+
+            else -> {
+                CategoryItemsView(modifier, lazyColumnState, categoryItems, onEvent)
+            }
+        }
+    }
+}

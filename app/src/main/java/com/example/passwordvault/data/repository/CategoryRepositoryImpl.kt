@@ -1,0 +1,33 @@
+package com.example.passwordvault.data.repository
+
+import com.example.passwordvault.data.local.dao.CategoryDao
+import com.example.passwordvault.data.local.dao.PasswordDao
+import com.example.passwordvault.data.mappers.toEntity
+import com.example.passwordvault.data.mappers.toModel
+import com.example.passwordvault.domain.model.CategoryModel
+import com.example.passwordvault.domain.repository.CategoryRepository
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+
+class CategoryRepositoryImpl(
+    private val passwordDao: PasswordDao,
+    private val categoryDao: CategoryDao
+) : CategoryRepository {
+
+    override fun getAllCategories(): Flow<List<CategoryModel>> {
+        return categoryDao.getAllCategories().map { items -> items.map { it.toModel() } }
+    }
+
+    override fun getCategoryItem(id: Int): Flow<CategoryModel?> {
+        return categoryDao.getCategory(id).map { it?.toModel() }
+    }
+
+    override suspend fun insertCategoryItem(item: CategoryModel): Long {
+        return categoryDao.insertCategory(item.toEntity())
+    }
+
+    override suspend fun deleteCategoryItem(item: CategoryModel) {
+        item.id?.let { id -> passwordDao.removeCategoryFromPasswords(id) }
+        categoryDao.deleteCategory(item.toEntity())
+    }
+}
